@@ -2,9 +2,15 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import MainPage from './components/MainPage';
+import Projects from './components/Projects';
 import NavBar from './components/NavBar';
 import { ThemeProvider } from '@mui/styles';
 import theme from './themes/Theme';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+
+
+
 
 const useStyles = makeStyles({
   appBar: {
@@ -22,24 +28,22 @@ function App() {
   return (
     <div>
       <AppBar className={classes.appBar} position="static">
-        {/* <Toolbar> */}
+        <Router>
+          <Routes>
+            <Route exact path="/projects" component={Projects} />
+            {/* <Route path="/" element={<Home />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} /> */}
+          </Routes>
+        </Router>
         <NavBar></NavBar>
-          {/* <Typography variant="h6" className={classes.title}>
-            My professional Profile
-          </Typography> */}
-        {/* </Toolbar> */}
       </AppBar>
-      {/* <div style={{ padding: '20px' }}>
-        <Typography variant="h4">Welcome to My Facebook Clone!</Typography>
-        <Typography variant="body1" style={{ marginTop: '20px' }}>
-          This is a work in progress. Check back soon for updates.
-        </Typography>
-      </div> */}
       <div>
-      <ThemeProvider theme={theme}>
-        <MainPage></MainPage>
-      </ThemeProvider>
-        </div>
+        <ThemeProvider theme={theme}>
+          <MainPage></MainPage>
+        </ThemeProvider>
+      </div>
     </div>
   );
 }
