@@ -11,7 +11,7 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme();
   const useStyles = makeStyles((theme) => ({
     container: {
-        backgroundColor: "#fff",
+        // backgroundColor: "#fff",
         padding: theme.spacing(4),
         borderRadius: 8,
         boxShadow: theme.shadows[2],

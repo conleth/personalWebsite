@@ -2,14 +2,15 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import MainPage from './components/MainPage';
-import Projects from './components/Projects';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import { ThemeProvider } from '@mui/styles';
 import theme from './themes/Theme';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-
-
+import HomePage from './pages/Home';
+import Projects from './pages/Projects';
+import Overview from './pages/Overview';
+// import Contact from './pages/Contact';
 
 
 const useStyles = makeStyles({
@@ -26,25 +27,29 @@ function App() {
   const classes = useStyles();
 
   return (
+    <ThemeProvider theme={theme}>
     <div>
       <AppBar className={classes.appBar} position="static">
-        <Router>
-          <Routes>
-            <Route exact path="/projects" component={Projects} />
-            {/* <Route path="/" element={<Home />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/contact" element={<Contact />} /> */}
-          </Routes>
-        </Router>
-        <NavBar></NavBar>
+      <Router>
+      <div>
+        <NavBar />
+        <Routes>
+        <Route path="/" element={<HomePage />} />
+          <Route path="/overview" element={<Overview />} />
+          <Route path="/projects" element={<Projects />} />
+          {/* <Route path="/contact" element={<Contact />} /> */}
+        </Routes>
+      </div>
+    </Router>
       </AppBar>
       <div>
-        <ThemeProvider theme={theme}>
+
           <MainPage></MainPage>
-        </ThemeProvider>
+       
       </div>
     </div>
+    <Footer />
+    </ThemeProvider>
   );
 }
 
